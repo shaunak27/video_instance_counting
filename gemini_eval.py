@@ -65,7 +65,7 @@ def main():
     parser.add_argument("--output_file", type=str, default="./results.json", help="Output file to save the results")
     args = parser.parse_args()
 
-    categories = os.listdir(args.data_path+"/base_version")
+    categories = os.listdir(os.path.join(args.data_path,"base_version"))
 
     for category in tqdm(categories, total=len(categories)):
         ground_truth_file = f"{args.ground_truth_path}/office1_{category}.json"
@@ -89,3 +89,6 @@ def main():
     print(f"Total: {off_dict['total']}") #Should be 200
 
     print(f"Results saved to {args.output_file}")
+
+if __name__ == "__main__":
+    main()
